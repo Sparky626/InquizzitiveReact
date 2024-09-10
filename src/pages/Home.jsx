@@ -6,6 +6,9 @@ function Home() {
     const navigate = useNavigate();
 
     const survivalPage = () => navigate('/survival');
+    const infinityPage = () => navigate('/infinity');
+    const leaderboardPage = () => navigate('/leaderboard');
+    const loginPage = () => navigate('/login');
     return (
         <>
             <img
@@ -23,7 +26,7 @@ function Home() {
                 </button>
                 <button 
                   className="button" 
-                  onClick={survivalPage}
+                  onClick={infinityPage}
                 >
                   Infinity
                 </button>
@@ -31,7 +34,7 @@ function Home() {
                 <div className="center">
                 <button 
                   className="button" 
-                  onClick={survivalPage}
+                  onClick={leaderboardPage}
                 >
                   Leaderboard
                 </button>
@@ -39,7 +42,7 @@ function Home() {
                 <div className="center" style={{ margin: "auto" }}>
                 <button 
                   className="button" 
-                  onClick={survivalPage}
+                  onClick={loginPage}
                 >
                   Login
                 </button>
