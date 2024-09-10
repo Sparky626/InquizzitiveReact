@@ -12,7 +12,7 @@ function Home() {
     return (
         <>
             <img
-                src="src/Images/Inquizzitive-nobg.jpg"
+                src=".src/Images/Inquizzitive-nobg.jpg"
                 className="mainsplashimg"
                 style={{ margin: "auto" }}
             />
