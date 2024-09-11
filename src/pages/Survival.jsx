@@ -188,7 +188,7 @@ function Survival() {
       </div>
       <div className="center">
         <img
-          src="src/Images/Inquizzitive-nobg-logo.png"
+          src={LoadImg}
           height="350px"
           width="350px"
           className="loadimg"
@@ -215,7 +215,7 @@ function Survival() {
         style={{ display: "none", paddingBottom: 0 }}
       >
         <img
-          src="Images/Inquizzitive-nobg-logo.png"
+          src={LoadImg}
           height="350px"
           width="350px"
           className="endimg"
