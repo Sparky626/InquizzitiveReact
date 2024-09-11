@@ -1,5 +1,5 @@
 import React from 'react'
-import InquizzNoBg from 'src/Images/Inquizzitive-nobg.jpg';
+import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
