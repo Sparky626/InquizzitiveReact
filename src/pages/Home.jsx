@@ -1,4 +1,5 @@
 import React from 'react'
+import InquizzNoBg from 'src/Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
@@ -12,9 +13,10 @@ function Home() {
     return (
         <>
             <img
-                src="src/Images/Inquizzitive-nobg.jpg"
+                src = {InquizzNoBg}
                 className="mainsplashimg"
                 style={{ margin: "auto" }}
+                alt = "not loading"
             />
             <div className="buttoncontainer">
                 <div className="center" style={{ margin: "auto" }}>
