@@ -1,8 +1,9 @@
 import React from "react";
 import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
+import LoadImg from '../Images/Inquizzitive-nobg-logo.png';
 import { useNavigate } from "react-router-dom";
-
+import  { igamestart, endGame } from '../main';
 function Infinity() {
     const navigate = useNavigate();
     const home = () =>  navigate('/');
@@ -19,175 +20,175 @@ function Infinity() {
         <div
           className="grid-item"
           id={9}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(9,document.getElementById(9).innerHTML)}
         >
           Random
         </div>
         <div
           className="grid-item"
           id={10}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(10,document.getElementById(10).innerHTML)}
         >
           Books
         </div>
         <div
           className="grid-item"
           id={11}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(11,document.getElementById(11).innerHTML)}
         >
           Film
         </div>
         <div
           className="grid-item"
           id={12}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(12,document.getElementById(12).innerHTML)}
         >
           Music
         </div>
         <div
           className="grid-item"
           id={13}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(13,document.getElementById(13).innerHTML)}
         >
-          Musicals &amp; Theatres
+          Musicals &amp; Theatre
         </div>
         <div
           className="grid-item"
           id={14}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(14,document.getElementById(14).innerHTML)}
         >
           Television
         </div>
         <div
           className="grid-item"
           id={15}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(15,document.getElementById(15).innerHTML)}
         >
           Video Games
         </div>
         <div
           className="grid-item"
           id={16}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(16,document.getElementById(16).innerHTML)}
         >
           Board Games
         </div>
         <div
           className="grid-item"
           id={17}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(17,document.getElementById(17).innerHTML)}
         >
           Science &amp; Nature
         </div>
         <div
           className="grid-item"
           id={18}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(18,document.getElementById(18).innerHTML)}
         >
           Computers
         </div>
         <div
           className="grid-item"
           id={19}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(19,document.getElementById(19).innerHTML)}
         >
           Mathematics
         </div>
         <div
           className="grid-item"
           id={20}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(20,document.getElementById(20).innerHTML)}
         >
           Mythology
         </div>
         <div
           className="grid-item"
           id={21}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(21,document.getElementById(21).innerHTML)}
         >
           Sports
         </div>
         <div
           className="grid-item"
           id={22}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(22,document.getElementById(22).innerHTML)}
         >
           Geography
         </div>
         <div
           className="grid-item"
           id={23}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(23,document.getElementById(23).innerHTML)}
         >
           History
         </div>
         <div
           className="grid-item"
           id={24}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(24,document.getElementById(24).innerHTML)}
         >
           Politics
         </div>
         <div
           className="grid-item"
           id={25}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(25,document.getElementById(25).innerHTML)}
         >
           Art
         </div>
         <div
           className="grid-item"
           id={26}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(26,document.getElementById(26).innerHTML)}
         >
           Celebrities
         </div>
         <div
           className="grid-item"
           id={27}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(27,document.getElementById(27).innerHTML)}
         >
           Animals
         </div>
         <div
           className="grid-item"
           id={28}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(28,document.getElementById(28).innerHTML)}
         >
           Vehicles
         </div>
         <div
           className="grid-item"
           id={29}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(29,document.getElementById(29).innerHTML)}
         >
           Comics
         </div>
         <div
           className="grid-item"
           id={30}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(30,document.getElementById(30).innerHTML)}
         >
           Gadgets
         </div>
         <div
           className="grid-item"
           id={31}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(31,document.getElementById(31).innerHTML)}
         >
           Anime &amp; Manga
         </div>
         <div
           className="grid-item"
           id={32}
-          onclick="igamestart(this.id,this.textContent)"
+          onClick = {() => igamestart(32,document.getElementById(32).innerHTML)}
         >
           Animation
         </div>
       </div>
       <div className="center">
         <img
-          src="Images/Inquizzitive-nobg-logo.png"
+          src={LoadImg}
           height="350px"
           width="350px"
           className="loadimg"
@@ -200,7 +201,7 @@ function Infinity() {
           <h2 id="question" />
           <div id="answer-buttons"></div>
           <div className="center">
-            <button className="extbtn" id="exit" onclick="endGame()">
+            <button className="extbtn" id="exit" onClick={() => endGame()}>
               End Loop!
             </button>
             <button className="nxtbtn" id="nxt">
@@ -219,7 +220,7 @@ function Infinity() {
         style={{ display: "none", paddingBottom: 0 }}
       >
         <img
-          src="Images/Inquizzitive-nobg-logo.png"
+          src={LoadImg}
           height="350px"
           width="350px"
           className="endimg"
@@ -229,8 +230,8 @@ function Infinity() {
         <h1 id="fscore">Final Score: </h1>
       </div>
       <div className="center">
-        <audio id="player" src="Music/Menu.mp3" />
-        <button className="icnbtns" id="sound" onclick="muteunmute()">
+        <audio id="player" src="../Music/Menu.mp3" />
+        <button className="icnbtns" id="sound" onClick={home}>
           <i className="material-icons">volume_up</i>
         </button>
         <button className="icnbtns" onClick={home}>
