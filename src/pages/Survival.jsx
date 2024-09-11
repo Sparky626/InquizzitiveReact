@@ -1,5 +1,6 @@
 import React from "react";
 import "../App.css";
+import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 
 function Survival() {
@@ -8,7 +9,7 @@ function Survival() {
     return (
       <>
       <img
-        src="src/Images/Inquizzitive-nobg.jpg"
+        src={InquizzNoBg}
         height="350px"
         width="350px"
         className="splashimg"
