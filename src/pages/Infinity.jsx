@@ -15,6 +15,7 @@ function Infinity() {
         width="350px"
         className="splashimg"
         id="splashimg"
+        
       />
       <div className="grid-container" id="grid">
         <div
@@ -204,6 +205,9 @@ function Infinity() {
             <button className="extbtn" id="exit" onClick={() => endGame()}>
               End Loop!
             </button>
+            <div className = "space" id = "space">
+
+            </div>
             <button className="nxtbtn" id="nxt">
               Next Question
             </button>

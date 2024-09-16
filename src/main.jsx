@@ -52,8 +52,10 @@ export function igamestart(clicked_id, clicked_genre){
   const quiz = document.getElementById('quiz');
   const exit = document.getElementById('exit');
   const loadimg = document.getElementById('loadimg');
+  const space = document.getElementById('space');
   loadimg.classList.add("fadeIn");
   loadimg.style.display = "block";
+  space.style.display = "none";
   setTimeout(function()
   {
       grid.style.display = "none";
@@ -105,6 +107,7 @@ function questionsetup(token){
       score = scorebox.textContent;
       const nextbutton = document.getElementById('nxt');
       const quiz = document.getElementById('quiz');
+      const space = document.getElementById('space');
       loadimg.style.display = "none";
       quiz.style.display = "block";
       answers.push(correct);
@@ -134,6 +137,9 @@ function questionsetup(token){
                   }
                   button.disabled = true;
               })
+              if (mode == 'infinity'){
+                space.style.display = 'block';
+              }
               nextbutton.textContent = "Next Question";
               nextbutton.style.display = "block";
               nextbutton.addEventListener("click", (e) => {
@@ -141,6 +147,7 @@ function questionsetup(token){
                       endGame(score);
                   }
                   else{
+                      space.style.display = 'none'
                       nextbutton.style.display = "none";
                       nextbutton.replaceWith(nextbutton.cloneNode(false));
                       resetstate(token);

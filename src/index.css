@@ -36,7 +36,8 @@ h1, h2, h3, h4, h5, h6, p{
   border-radius: 12px;
   color: white;
   cursor: pointer;
-  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 15px 30px;
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
@@ -52,7 +53,7 @@ h1, h2, h3, h4, h5, h6, p{
   color:black;
 }
 .buttoncontainer {
-  margin: auto;
+  translate: -4.5px;
 } 
 .center {
   display: flex;
@@ -115,7 +116,8 @@ h1, h2, h3, h4, h5, h6, p{
   width: fit-content;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: black;
   border-radius: 10px;
   padding: 10px;
@@ -131,7 +133,7 @@ h1, h2, h3, h4, h5, h6, p{
   font-style: normal;
   font-size: 20px;
   text-align: center;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -147,10 +149,10 @@ h1, h2, h3, h4, h5, h6, p{
   cursor: pointer;
   display: block;
   font-size: 15px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   text-align: center;
-  translate: -0.25rem;
   transition: all 0.3s;
   padding-left: 10px;
   padding-right: 10px;
@@ -163,10 +165,10 @@ h1, h2, h3, h4, h5, h6, p{
   cursor: pointer;
   display: block;
   font-size: 15px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   text-align: center;
-  translate: -0.15rem;
   transition: all 0.3s;
   padding-left: 10px;
   padding-right: 10px;
@@ -239,6 +241,7 @@ input:hover{
   margin-bottom: 80px;
   max-width: 100%;
   object-fit: scale-down;
+  translate: -4.5px;
   padding: 30px;
 }
 .nxtbtn{
@@ -310,6 +313,11 @@ input:hover{
   max-width: 100%;
   object-fit: scale-down;
   padding: 30px;
+}
+.space{
+  margin-left: 10px;
+  margin-right: 10px;
+
 }
 @media screen and (max-width: 700px), (max-height: 700px) {
   
