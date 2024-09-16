@@ -138,7 +138,7 @@ function questionsetup(token){
                   button.disabled = true;
               })
               if (mode == 'infinity'){
-                space.style.display = 'block';
+                space.style.display = "block";
               }
               nextbutton.textContent = "Next Question";
               nextbutton.style.display = "block";
@@ -146,8 +146,13 @@ function questionsetup(token){
                   if (mode == 'survival' && clicked.style.background == "red"){
                       endGame(score);
                   }
-                  else{
+                  else if(mode == 'infinity'){
                       space.style.display = "none";
+                      nextbutton.style.display = "none";
+                      nextbutton.replaceWith(nextbutton.cloneNode(false));
+                      resetstate(token);
+                  }
+                  else{
                       nextbutton.style.display = "none";
                       nextbutton.replaceWith(nextbutton.cloneNode(false));
                       resetstate(token);
