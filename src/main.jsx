@@ -147,7 +147,7 @@ function questionsetup(token){
                       endGame(score);
                   }
                   else{
-                      space.style.display = 'none'
+                      space.style.display = "none";
                       nextbutton.style.display = "none";
                       nextbutton.replaceWith(nextbutton.cloneNode(false));
                       resetstate(token);
