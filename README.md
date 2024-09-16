@@ -1,8 +1,16 @@
-# React + Vite
+# Inquizzitive
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a trivia game that uses the Open Trivia Database for its questions.
 
-Currently, two official plugins are available:
+There are currently two modes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Survival
+
+This game mode allows you to answer questions until you answer incorrectly, which causes the game to end.
+
+## Infinity
+
+This game mode allows you to answer questions infinitely without the penalty of ending the game when you get one wrong.
+
+
+
