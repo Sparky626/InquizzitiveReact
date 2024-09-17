@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function CreateAccount () {
+  let inUse;
   const navigate = useNavigate();
   const home = () =>  navigate('/');
   const loginpage = () => navigate('/login');
   const [inputs, setInputs] = useState("");
+  const [response, setResponse] = useState("");
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -17,7 +19,8 @@ function CreateAccount () {
   }
   const handleSubmit = (event) =>{
     event.preventDefault();
-    alert("Account Created!");
+    setInputs('');
+    inputs.email = inputs.email.toLowerCase();
     const instance = axios.create({
       baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
       withCredentials: false,
@@ -26,13 +29,27 @@ function CreateAccount () {
         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         }
     });
-    instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
+    instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ inputs.email)
     .then(function (response){
       console.log(response);
+      if(response.status == 200 && response.data != null){
+        alert("email already in use");
+      }
+      else{
+          instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
+          .then(function (response){
+            console.log(response);
+          })
+          .catch(function (error){
+            console.log(error);
+          });
+          navigate("/login");
+      }
     })
     .catch(function (error){
       console.log(error);
     });
+    
   };
   
   return (
@@ -56,6 +73,8 @@ function CreateAccount () {
                 name = "email"
                 value = {inputs.email || ""}
                 onChange = {handleChange}
+                placeholder = "enter your email..."
+                required
               />
             </div>
             
@@ -69,6 +88,8 @@ function CreateAccount () {
                 name = "password"
                 value = {inputs.password || ""}
                 onChange = {handleChange}
+                placeholder= "enter a password..."
+                required
               />
             </div>
             <label>
@@ -80,6 +101,7 @@ function CreateAccount () {
                 name = "message"
                 value = {inputs.message || ""}
                 onChange = {handleChange}
+                placeholder="enter a message..."
               />
             </div>
             <div className="center" style={{marginTop: "15px"}}>

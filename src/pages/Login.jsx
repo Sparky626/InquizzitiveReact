@@ -55,7 +55,34 @@ function Login () {
       console.log(email, pwd);
       setEmail('');
       setPwd('');
-      setSuccess(true);
+      setEmail(email.toLowerCase());
+      const instance = axios.create({
+        baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
+        withCredentials: false,
+        headers: {
+          'Access-Control-Allow-Origin' : '*',
+          'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          }
+      });
+      instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ email)
+      .then(function (response){
+        console.log(response);
+        if(response.status == 200 && response.data != null && response.data.password == pwd){
+          alert(response.data.message);
+          navigate('/');
+        }
+        else{
+          alert("Incorrect Login!");
+            /*instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', )
+            .then(function (response){
+              console.log(response);
+            })
+            .catch(function (error){
+              console.log(error);
+            });
+            navigate("/login");*/
+        }
+      })
 
   }
   
