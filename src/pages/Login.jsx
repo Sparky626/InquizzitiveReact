@@ -4,10 +4,12 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import CreateAccount from "./CreateAccount";
 
 function Login () {
   const navigate = useNavigate();
-  const home = () =>  navigate('/');
+  const home = () => navigate('/');
+  const createaccountpage = () =>  navigate('/createaccount');
   const [inputs, setInputs] = useState("");
   const handleChange = (event) => {
     const name = event.target.name;
@@ -69,24 +71,27 @@ function Login () {
                 onChange = {handleChange}
               />
             </div>
-            <label>
-                Message:
-              </label>
-            <div className="center">
-              <input
-                type ="text"
-                name = "message"
-                value = {inputs.message || ""}
-                onChange = {handleChange}
-              />
-            </div>
-            <div className="center">
+            <div className="center" style={{marginTop: "15px"}}>
               <input
                 className="formbutton"
                 type ="submit"
+                text = "Login"
               />
+              <div className="space"></div>
+              <button className="button" onClick={createaccountpage} style={{animation: "none"}}>
+              Create Account
+              </button>
             </div>
           </form>
+      </div>
+      <div className="center">
+        <audio id="player" src="Music/Menu.mp3" />
+        <button className="icnbtns" id="sound" onClick={home}>
+          <i className="material-icons">volume_up</i>
+        </button>
+        <button className="icnbtns" onClick={home}>
+          <i className="material-icons">home</i>
+        </button>
       </div>
     </>
   );

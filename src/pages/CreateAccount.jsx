@@ -1,87 +1,111 @@
 import React from "react";
+import axios from 'axios';
 import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Leaderboard from "./Leaderboard";
 
-function Login () {
+function CreateAccount () {
   const navigate = useNavigate();
   const home = () =>  navigate('/');
-  const [result, setResult] = useState("");
+  const loginpage = () => navigate('/login');
+  const [inputs, setInputs] = useState("");
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs(values => ({...values, [name]: value}))
+  }
   const handleSubmit = (event) =>{
     event.preventDefault();
-    alert('You entered: ${email} + ${password} + ${message}')
-  }
+    alert("Account Created!");
+    const instance = axios.create({
+      baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
+      withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        }
+    });
+    instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
+    .then(function (response){
+      console.log(response);
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  };
+  
   return (
-    <div className={"center"}>
-      <div className={"center"}>
-        <div className={"center"}>
-          <div>
-          <img
-                src = {InquizzNoBg}
-                className="mainsplashimg"
-                style={{ margin: "auto" }}
-                alt = "not loading"
-            />
-            <form className = {"centerform"} onSubmit={handleSubmit(onSubmit)}>
-              <div className={"center"}>
-                <h1 className={"center"}>Login</h1>
-              </div>
-              <div className={"center"}>
-                <input
-                  className={"center"}
-                  {...register("email", {
-                    required: true,
-                    pattern: {
-                      value:
-                        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                      message: "Please enter a valid email",
-                    },
-                  })}
-                  placeholder="Email"
-                />
-                {errors.email?.type === "required" && (
-                  <span>This field is required</span>
-                )}
-                {errors.email?.message && <span>{errors.email?.message}</span>}
-              </div>
-              <div className={"center"}>
-                <input
-                  className={
-                    "center"
-                  }
-                  {...register("password", {required: true})}
-                  placeholder="Password"
-                />
-                {errors.password?.type === "required" && (
-                  <span>This field is required</span>
-                )}
-              </div>
-              <div className={"center"}>
-                <textarea
-                  className={"center"}
-                  {...register("message", { required: true })}
-                  placeholder="Message"
-                />
-                {errors.message?.type === "required" && (
-                  <span>This field is required</span>
-                )}
-              </div>
-              <p>{result}</p>
-              <button
-                className={"formbutton"}
-                type="submit"
-              >
-                Send Message
+    <>
+      <img
+          src={InquizzNoBg}
+          height="300px"
+          width="300px"
+          className="splashimg"
+          id="splashimg"
+        />
+      <h1 className="center" style={{animation: "fadeIn 2.0s"}}>Create Account</h1>
+      <div className="center">
+          <form onSubmit={handleSubmit} className="centerform">
+            <label>
+                Email: 
+            </label>
+            <div className="center">
+              <input
+                type ="text"
+                name = "email"
+                value = {inputs.email || ""}
+                onChange = {handleChange}
+              />
+            </div>
+            
+            <label>
+                Password: 
+              </label>
+            <div className="center">
+              
+              <input
+                type ="text"
+                name = "password"
+                value = {inputs.password || ""}
+                onChange = {handleChange}
+              />
+            </div>
+            <label>
+                Message:
+              </label>
+            <div className="center">
+              <input
+                type ="text"
+                name = "message"
+                value = {inputs.message || ""}
+                onChange = {handleChange}
+              />
+            </div>
+            <div className="center" style={{marginTop: "15px"}}>
+              <input
+                className="formbutton"
+                type ="submit"
+                value = "Create Account"
+              />
+              <div className="space"></div>
+              <button className="button" onClick={loginpage} style={{animation: "none"}}>
+              Back to Login
               </button>
-            </form>
-          </div>
-        </div>
+            </div>
+          </form>
       </div>
-    </div>
+      <div className="center">
+        <audio id="player" src="Music/Menu.mp3" />
+        <button className="icnbtns" id="sound" onClick={home}>
+          <i className="material-icons">volume_up</i>
+        </button>
+        <button className="icnbtns" onClick={home}>
+          <i className="material-icons">home</i>
+        </button>
+      </div>
+    </>
   );
 }
 
-export default Login;
+export default CreateAccount;
