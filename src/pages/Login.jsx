@@ -16,7 +16,15 @@ function Login () {
   }
   const handleSubmit = (event) =>{
     event.preventDefault();
-    axios.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
+    const instance = axios.create({
+      baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
+      withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        }
+    });
+    instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
     .then(function (response){
       console.log(response);
     })
