@@ -65,7 +65,7 @@ function CreateAccount () {
             <div className="center">
               
               <input
-                type ="text"
+                type ="password"
                 name = "password"
                 value = {inputs.password || ""}
                 onChange = {handleChange}
