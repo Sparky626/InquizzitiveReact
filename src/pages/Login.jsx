@@ -7,12 +7,11 @@ import { useRef, useState, useEffect } from "react";
 
 function Login () {
   const userRef = useRef();
-  const errRef = useRef();
 
   const [email, setEmail] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState();
 
   useEffect(() => {
       userRef.current.focus();
@@ -25,30 +24,6 @@ function Login () {
   const navigate = useNavigate();
   const home = () => navigate('/');
   const createaccountpage = () =>  navigate('/createaccount');
-  /*const [inputs, setInputs] = useState("");
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
-  }
-  const handleSubmit = (event) =>{
-    event.preventDefault();
-    const instance = axios.create({
-      baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
-      withCredentials: false,
-      headers: {
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        }
-    });
-    instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
-    .then(function (response){
-      console.log(response);
-    })
-    .catch(function (error){
-      console.log(error);
-    });
-  };*/
   const handleSubmit = async (e) =>{
       e.preventDefault();
       setEmail('');
@@ -67,6 +42,7 @@ function Login () {
         console.log(response);
         if(response.status == 200 && response.data != null && response.data.password == pwd){
           navigate('/');
+
         }
         else{
           const err = document.getElementById('errormsg');
@@ -79,17 +55,6 @@ function Login () {
   
   return (
     <>
-      {success ? (
-                <section>
-                    <h1 style={{animation: "fadeIn 2.0s"}}>You are logged in!</h1>
-                    <br />
-                    <p>
-                    <button className="icnbtns" onClick={home}>
-                      <i className="material-icons">home</i>
-                    </button>
-                    </p>
-                </section>
-        ) : (
         <section>
           <img
               src={InquizzNoBg}

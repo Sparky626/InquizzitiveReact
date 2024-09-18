@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function CreateAccount () {
   let inUse;
+  let invalid;
   const navigate = useNavigate();
   const home = () =>  navigate('/');
   const loginpage = () => navigate('/login');
@@ -29,16 +30,29 @@ function CreateAccount () {
         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
         }
     });
-    instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ inputs.email)
+    instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/accounts')
     .then(function (response){
-      console.log(response);
-      if(response.status == 200 && response.data != null){
-        const err = document.getElementById('errormsg');
-        err.style.display = "block";
-        err.innerHTML = "Email is already in use.";
+      for (const key in response.data) {
+        response.data[key].forEach(item => {
+            if(inputs.email == item.email){
+              const err = document.getElementById('errormsg');
+              err.style.display = "block";
+              err.innerHTML = "Email is already in use.";
+              invalid = true;
+            }
+            else if(inputs.username == item.username){
+              const err = document.getElementById('errormsg');
+              err.style.display = "block";
+              err.innerHTML = "Username is already in use.";
+              invalid = true;
+            }
+            else{
+              console.log("Not a match!")
+            }
+        });
       }
-      else{
-          instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
+      if(invalid != true){
+        instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
           .then(function (response){
             console.log(response);
           })
