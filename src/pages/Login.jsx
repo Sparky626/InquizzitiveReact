@@ -66,7 +66,6 @@ function Login () {
       .then(function (response){
         console.log(response);
         if(response.status == 200 && response.data != null && response.data.password == pwd){
-          alert(response.data.message);
           navigate('/');
         }
         else{
