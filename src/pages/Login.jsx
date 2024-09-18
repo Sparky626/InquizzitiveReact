@@ -51,7 +51,6 @@ function Login () {
   };*/
   const handleSubmit = async (e) =>{
       e.preventDefault();
-      console.log(email, pwd);
       setEmail('');
       setPwd('');
       setEmail(email.toLowerCase());
@@ -74,14 +73,6 @@ function Login () {
           const err = document.getElementById('errormsg');
           err.style.display = "block";
           err.innerHTML = "Incorrect Username or Password.";
-            /*instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', )
-            .then(function (response){
-              console.log(response);
-            })
-            .catch(function (error){
-              console.log(error);
-            });
-            navigate("/login");*/
         }
       })
 

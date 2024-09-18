@@ -95,15 +95,15 @@ function CreateAccount () {
               />
             </div>
             <label>
-                Message:
+                Display Name:
               </label>
             <div className="center">
               <input
                 type ="text"
-                name = "message"
-                value = {inputs.message || ""}
+                name = "username"
+                value = {inputs.username || ""}
                 onChange = {handleChange}
-                placeholder="enter a message..."
+                placeholder="enter a display name..."
               />
             </div>
             <div className="center">
