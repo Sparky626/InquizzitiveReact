@@ -19,13 +19,16 @@ function Home() {
                 alt = "not loading"
             />
             <div className="buttoncontainer">
-                <div className="center" style={{ margin: "auto" }}>
+                <div className="center">
                 <button 
                   className="button" 
                   onClick={survivalPage}
                 >
                   Survival
                 </button>
+                <div className="space">
+
+                </div>
                 <button 
                   className="button" 
                   onClick={infinityPage}

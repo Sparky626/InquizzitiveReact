@@ -53,7 +53,7 @@ h1, h2, h3, h4, h5, h6, p{
   color:black;
 }
 .buttoncontainer {
-  margin: auto;
+    
 } 
 .center {
   display: flex;
@@ -151,7 +151,6 @@ h1, h2, h3, h4, h5, h6, p{
   margin: 0 auto;
   width: 100%;
   text-align: center;
-  translate: -0.25rem;
   transition: all 0.3s;
   padding-left: 10px;
   padding-right: 10px;
@@ -167,8 +166,8 @@ h1, h2, h3, h4, h5, h6, p{
   margin: 0 auto;
   width: 100%;
   text-align: center;
-  translate: -0.15rem;
   transition: all 0.3s;
+  translate: -4px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 20px;
@@ -310,6 +309,7 @@ input:hover{
   margin-right: auto;
   max-width: 100%;
   object-fit: scale-down;
+  translate: -4px;
   padding: 30px;
 }
 @media screen and (max-width: 700px), (max-height: 700px) {

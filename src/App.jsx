@@ -7,6 +7,7 @@ import Survival from "./pages/Survival";
 import Infinity from "./pages/Infinity";
 import Leaderboard from "./pages/Leaderboard";
 import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount"
 import NoPage from "./pages/NoPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path = "/infinity" element = {<Infinity/>} exact/>
           <Route path = "/leaderboard" element = {<Leaderboard/>} exact/>
           <Route path = "/login" element = {<Login/>} exact/>
+          <Route path = "/createaccount" element = {<CreateAccount/>} exact/>
           <Route path = "*" element = {<NoPage/>} exact/>
         </Routes>
         </Router>    
