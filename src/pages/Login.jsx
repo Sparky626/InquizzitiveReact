@@ -4,7 +4,6 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
-import CreateAccount from "./CreateAccount";
 
 function Login () {
   const userRef = useRef();
@@ -72,7 +71,9 @@ function Login () {
           navigate('/');
         }
         else{
-          alert("Incorrect Login!");
+          const err = document.getElementById('errormsg');
+          err.style.display = "block";
+          err.innerHTML = "Incorrect Username or Password.";
             /*instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', )
             .then(function (response){
               console.log(response);
@@ -135,6 +136,9 @@ function Login () {
                     value = {pwd}
                     required
                   />
+                </div>
+                <div className="center">
+                  <p id = "errormsg" style={{display: "none", color: "red"}}></p>
                 </div>
                 <div className="center" style={{marginTop: "15px"}}>
                   <input

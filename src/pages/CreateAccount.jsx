@@ -33,7 +33,9 @@ function CreateAccount () {
     .then(function (response){
       console.log(response);
       if(response.status == 200 && response.data != null){
-        alert("email already in use");
+        const err = document.getElementById('errormsg');
+        err.style.display = "block";
+        err.innerHTML = "Email is already in use.";
       }
       else{
           instance.post('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', inputs)
@@ -103,6 +105,9 @@ function CreateAccount () {
                 onChange = {handleChange}
                 placeholder="enter a message..."
               />
+            </div>
+            <div className="center">
+                  <p id = "errormsg" style={{display: "none", color: "red"}}></p>
             </div>
             <div className="center" style={{marginTop: "15px"}}>
               <input
