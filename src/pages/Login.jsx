@@ -17,10 +17,6 @@ function Login () {
       userRef.current.focus();
   }, [])
 
-  useEffect(() => {
-      setErrMsg('');
-  }, [email, pwd])
-
   const navigate = useNavigate();
   const home = () => navigate('/');
   const createaccountpage = () =>  navigate('/createaccount');
@@ -39,8 +35,10 @@ function Login () {
       });
       instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ email)
       .then(function (response){
-        console.log(response);
         if(response.status == 200 && response.data != null && response.data.password == pwd){
+          setUser(response.data);
+          localStorage.setItem('user', JSON.stringify(response.data.username));
+          console.log(localStorage.getItem('user'));
           navigate('/');
 
         }
@@ -118,7 +116,6 @@ function Login () {
             </button>
           </div>
         </section>
-      )}
     </>
   );
 }
