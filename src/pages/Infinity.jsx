@@ -3,7 +3,7 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import LoadImg from '../Images/Inquizzitive-nobg-logo.png';
 import { useNavigate } from "react-router-dom";
-import  { igamestart, endGame } from '../main';
+import  { igamestart, infinityendGame } from '../main';
 import { useRef, useState, useEffect } from "react";
 function Infinity() {
     const navigate = useNavigate();
@@ -214,7 +214,7 @@ function Infinity() {
           <h2 id="question" />
           <div id="answer-buttons"></div>
           <div className="center">
-            <button className="extbtn" id="exit" onClick={() => endGame()}>
+            <button className="extbtn" id="exit" onClick={() => infinityendGame()}>
               End Loop!
             </button>
             <div className = "space" id = "space">

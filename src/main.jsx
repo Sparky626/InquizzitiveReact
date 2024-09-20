@@ -156,7 +156,7 @@ function questionsetup(token){
                               'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
                               }
                           });
-                          let update = {"email": localStorage.getItem('email'), "updateKey" : "survivalscore" , "updateValue" : localStorage.getItem('survivalscore')}; 
+                          let update = {"email": localStorage.getItem('email'), "updateKey" : "survivalscore" , "updateValue" : parseInt(localStorage.getItem('survivalscore'))}; 
                           axios.patch('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', update)
                           .then(function (response){
                             console.log(response);
@@ -199,6 +199,37 @@ function resetstate(token){
           questionsetup(token);       
       }, 3000)
   })()
+}
+export function infinityendGame(){
+  if (score > localStorage.getItem('infinityscore')){
+    console.log("New High Infinity Score!");
+    localStorage.setItem('infinityscore', score);
+    const instance = axios.create({
+      baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
+      withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        }
+    });
+    let update = {"email": localStorage.getItem('email'), "updateKey" : "infinityscore" , "updateValue" : parseInt(localStorage.getItem('infinityscore'))}; 
+    axios.patch('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', update)
+    .then(function (response){
+      console.log(response);
+    })
+    .catch(function (error){
+      console.log(error);
+    });
+  }
+  const quiz = document.getElementById('quiz');
+  quiz.style.display = "none";
+  const endimg = document.getElementById('loadimg');
+  endimg.style.display = "block";
+  const gameend = document.getElementById('gameend');
+  gameend.classList.add('fadeIn');
+  gameend.style.display= "block";
+  const fscore = document.getElementById('fscore');
+  fscore.innerHTML = "Final Score: " + score;
 }
 export function endGame(){
   const quiz = document.getElementById('quiz');
