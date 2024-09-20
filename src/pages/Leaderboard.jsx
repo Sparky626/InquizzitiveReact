@@ -4,15 +4,12 @@ import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import { muteunmute } from "../main";
 import axios from "axios";
-let Leaderboardfilled = false;
 let db = new Array();
-let survival = new Array();
-let infinity = new Array();
 function Leaderboard() {
     const navigate = useNavigate();
     const home = () =>  navigate('/');
     useEffect(() => {
-      if (Leaderboardfilled == false){
+          console.log("populating leaderboard");
           const instance = axios.create({
             baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
             withCredentials: false,
@@ -31,7 +28,6 @@ function Leaderboard() {
             db.sort(function(a, b){
               return b.infinityscore - a.infinityscore;
             });
-            console.log("setting up leaderboard");
             const sscore1 = document.getElementById('sscore1');
             const sscore2 = document.getElementById('sscore2');
             const sscore3 = document.getElementById('sscore3');
@@ -55,13 +51,8 @@ function Leaderboard() {
             sscore3.innerHTML = "3. " + db[2].username + " - " + db[2].survivalscore;
             sscore4.innerHTML = "4. " + db[3].username + " - " + db[3].survivalscore;
             sscore5.innerHTML = "5. " + db[4].username + " - " + db[4].survivalscore;
-            
-
+            db=[];
           });
-          
-          
-      }
-      Leaderboardfilled = true;
     },[])
     
 
@@ -75,21 +66,21 @@ function Leaderboard() {
           id="leadersplashimg"
         />
         <div className="leaderboard" id="leaderboard">
-          <h2 style={{textDecoration: "underline"}}>Top 5 Infinity</h2>
+          <h1 style={{textDecoration: "underline"}}>Top 5 Infinity</h1>
           <div>
-            <h3 id = "iscore1">Scorer 1</h3>
-            <h3 id = "iscore2">Scorer 2</h3>
-            <h3 id = "iscore3">Scorer 3</h3>
-            <h3 id = "iscore4">Scorer 4</h3>
-            <h3 id = "iscore5">Scorer 5</h3>
+            <h3 id = "iscore1"></h3>
+            <h3 id = "iscore2"></h3>
+            <h3 id = "iscore3"></h3>
+            <h3 id = "iscore4"></h3>
+            <h3 id = "iscore5"></h3>
           </div>
-          <h2 style={{textDecoration: "underline"}}>Top 5 Survival</h2>
+          <h1 style={{textDecoration: "underline"}}>Top 5 Survival</h1>
           <div>
-            <h3 id = "sscore1">Scorer 1</h3>
-            <h3 id = "sscore2">Scorer 2</h3>
-            <h3 id = "sscore3">Scorer 3</h3>
-            <h3 id = "sscore4">Scorer 4</h3>
-            <h3 id = "sscore5">Scorer 5</h3>
+            <h3 id = "sscore1"></h3>
+            <h3 id = "sscore2"></h3>
+            <h3 id = "sscore3"></h3>
+            <h3 id = "sscore4"></h3>
+            <h3 id = "sscore5"></h3>
           </div>
         </div>
         
