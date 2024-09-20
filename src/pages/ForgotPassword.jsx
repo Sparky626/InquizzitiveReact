@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { muteunmute } from "../main";
 
-function Login () {
+function ForgotPassword () {
   const userRef = useRef();
 
   const [email, setEmail] = useState('');
@@ -21,7 +21,6 @@ function Login () {
   const navigate = useNavigate();
   const home = () => navigate('/');
   const createaccountpage = () =>  navigate('/createaccount');
-  const ForgotPassPage = () => navigate('/forgotpass');
   const handleSubmit = async (e) =>{
       e.preventDefault();
       setEmail('');
@@ -37,21 +36,15 @@ function Login () {
       });
       instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ email)
       .then(function (response){
-        if(response.status == 200 && response.data != null && response.data.password == pwd){
-          setUser(response.data);
-          localStorage.setItem('userdata', JSON.stringify(response.data));
-          localStorage.setItem('user', JSON.stringify(response.data.username).slice(1,-1));
-          localStorage.setItem('email', JSON.stringify(response.data.email).slice(1,-1));
-          localStorage.setItem('password', JSON.stringify(response.data.password).slice(1,-1));
-          localStorage.setItem('survivalscore', JSON.stringify(response.data.survivalscore));
-          localStorage.setItem('infinityscore', JSON.stringify(response.data.infinityscore));
+        if(response.status == 200 && response.data != null && response.data.email == email){
+          
           navigate('/');
 
         }
         else{
           const err = document.getElementById('errormsg');
           err.style.display = "block";
-          err.innerHTML = "Incorrect Username or Password.";
+          err.innerHTML = "This email is not registered with any account.";
         }
       })
 
@@ -67,7 +60,7 @@ function Login () {
               className="splashimg"
               id="splashimg"
           />
-          <h1 className="center" style={{animation: "fadeIn 2.0s"}}>Login</h1>
+          <h1 className="center" style={{animation: "fadeIn 2.0s"}}>Forgot Password</h1>
           <div className="center">
               <form onSubmit={handleSubmit} className="centerform">
                 <label>
@@ -81,23 +74,9 @@ function Login () {
                     autoCapitalize="off"
                     onChange={(e) => setEmail(e.target.value)}
                     value = {email}
+                    placeholder="...enter email"
                     required
                   />
-                </div>
-                <label>
-                    Password: 
-                  </label>
-                <div className="center">
-                  <input
-                    type ="password"
-                    name = "password"
-                    onChange={(e) => setPwd(e.target.value)}
-                    value = {pwd}
-                    required
-                  />
-                </div>
-                <div className="center">
-                  <p id = "forgotpass" style={{color: "blue", cursor: "pointer"}} onClick={ForgotPassPage}>Forgot Password?</p>
                 </div>
                 <div className="center">
                   <p id = "errormsg" style={{display: "none", color: "red"}}></p>
@@ -106,12 +85,8 @@ function Login () {
                   <input
                     className="formbutton"
                     type ="submit"
-                    value = "Login"
+                    value = "Send Email"
                   />
-                  <div className="space"></div>
-                  <button className="button" onClick={createaccountpage} style={{animation: "none"}}>
-                  Create Account
-                  </button>
                 </div>
               </form>
           </div>
@@ -129,4 +104,4 @@ function Login () {
   );
 }
 
-export default Login;
+export default ForgotPassword;

@@ -14,16 +14,10 @@ function Home() {
     const accountPage = () => navigate('/account')
     const loginPage = () => navigate('/login');
     const handleLogout = () =>{
-      const login = document.getElementById('login');
       const logout = document.getElementById('logout');
-      const survivalscore = document.getElementById('survivalscore');
-      const infinityscore = document.getElementById('infinityscore');
       const user = document.getElementById('user');
-      login.style.display = "none";
       user.style.display = "none";
-      infinityscore.style.display = "none";
-      survivalscore.style.display = "none";
-      logout.style.display = "block";
+      logout.style.display = "none";
       localStorage.clear();
       window.location.reload();     
     }
