@@ -44,11 +44,6 @@ function Login () {
           localStorage.setItem('password', JSON.stringify(response.data.password).slice(1,-1));
           localStorage.setItem('survivalscore', JSON.stringify(response.data.survivalscore));
           localStorage.setItem('infinityscore', JSON.stringify(response.data.infinityscore));
-          console.log(localStorage.getItem('user'));
-          console.log(localStorage.getItem('email'));
-          console.log(localStorage.getItem('password'));
-          console.log(localStorage.getItem('survivalscore'));
-          console.log(localStorage.getItem('infinityscore'));
           navigate('/');
 
         }

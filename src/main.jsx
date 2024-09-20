@@ -146,7 +146,7 @@ function questionsetup(token){
               nextbutton.style.display = "block";
               nextbutton.addEventListener("click", (e) => {
                   if (mode == 'survival' && clicked.style.background == "red"){
-                      if (score > localStorage.getItem('survivalscore')){
+                      if (parseInt(score) > parseInt(localStorage.getItem('survivalscore'))){
                           console.log("New High Survival Score!");
                           localStorage.setItem('survivalscore', score);
                           const instance = axios.create({
@@ -187,6 +187,7 @@ function questionsetup(token){
 }
 function resetstate(token){
   (async () => {
+      console.log(score);
       const ansbtns = document.getElementById('answer-buttons');
       while(ansbtns.firstChild){
           ansbtns.removeChild(ansbtns.firstChild);
@@ -202,7 +203,7 @@ function resetstate(token){
   })()
 }
 export function infinityendGame(){
-  if (score > localStorage.getItem('infinityscore')){
+  if (parseInt(score) > parseInt(localStorage.getItem('infinityscore'))){
     console.log("New High Infinity Score!");
     localStorage.setItem('infinityscore', score);
     const instance = axios.create({
