@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import axios from 'axios';
+import music from '../src/Music/Menu.mp3'
 import './index.css'
 let genre;
 let genreid;
@@ -14,8 +15,8 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
-function muteunmute(){
-  var audio = document.getElementById("player");
+export function muteunmute(){
+  const audio = new Audio(music);
   if(audio.paused)
   {
       audio.play();

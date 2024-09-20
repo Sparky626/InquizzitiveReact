@@ -3,7 +3,7 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import LoadImg from '../Images/Inquizzitive-nobg-logo.png';
 import { useNavigate } from "react-router-dom";
-import  { sgamestart, endGame } from '../main';
+import  { sgamestart, endGame, muteunmute } from '../main';
 import { useRef, useState, useEffect } from "react";
 function Survival() {
     const navigate = useNavigate();
@@ -23,8 +23,8 @@ function Survival() {
       <>
       <img
         src={InquizzNoBg}
-        height="350px"
-        width="350px"
+        height="300px"
+        width="300px"
         className="splashimg"
         id="splashimg"
       />
@@ -201,8 +201,8 @@ function Survival() {
       <div className="center">
         <img
           src={LoadImg}
-          height="350px"
-          width="350px"
+          height="300px"
+          width="300px"
           className="loadimg"
           id="loadimg"
         />
@@ -238,8 +238,8 @@ function Survival() {
       </div>
       <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
       <div className="center">
-        <audio id="player" src="Music/Menu.mp3" />
-        <button className="icnbtns" id="sound" onClick={home}>
+        
+        <button className="icnbtns" id="sound" onClick={muteunmute}>
           <i className="material-icons">volume_up</i>
         </button>
         <button className="icnbtns" onClick={home}>
