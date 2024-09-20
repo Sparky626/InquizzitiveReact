@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
+import { muteunmute } from "../main";
 
 function Leaderboard() {
     const navigate = useNavigate();
@@ -33,10 +34,10 @@ function Leaderboard() {
             <h3>Scorer 5</h3>
           </div>
         </div>
-        <audio id="player" src="Music/Menu.mp3" />
+        
         <div className="center">
-        <audio id="player" src="Music/Menu.mp3" />
-        <button className="icnbtns" id="sound" onclick="muteunmute()">
+        
+        <button className="icnbtns" id="sound" onClick={muteunmute}>
           <i className="material-icons">volume_up</i>
         </button>
         <button className="icnbtns" onClick={home}>

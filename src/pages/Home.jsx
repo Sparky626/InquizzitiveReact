@@ -3,6 +3,7 @@ import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { useRef, useState, useEffect } from "react";
+import { muteunmute } from '../main';
 
 function Home() {
 
@@ -103,8 +104,8 @@ function Home() {
             <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <div className="center">
-              <audio id="player" src="Music/Menu.mp3" />
-              <button className="icnbtns" id="sound">
+              
+              <button className="icnbtns" id="sound" onClick={muteunmute}>
                 <i className="material-icons">volume_up</i>
               </button>
             </div>

@@ -4,6 +4,7 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
+import { muteunmute } from "../main";
 
 function Login () {
   const userRef = useRef();
@@ -116,8 +117,8 @@ function Login () {
               </form>
           </div>
           <div className="center">
-            <audio id="player" src="Music/Menu.mp3" />
-            <button className="icnbtns" id="sound" onClick={home}>
+            
+            <button className="icnbtns" id="sound" onClick={muteunmute}>
               <i className="material-icons">volume_up</i>
             </button>
             <button className="icnbtns" onClick={home}>
