@@ -2,16 +2,13 @@ import React from 'react'
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import "../App.css";
-import { useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { muteunmute } from '../main';
 
 function Home() {
 
     const navigate = useNavigate();
-    const survivalPage = () => navigate('/survival');
-    const infinityPage = () => navigate('/infinity');
-    const leaderboardPage = () => navigate('/leaderboard');
-    const accountPage = () => navigate('/account')
+    const home = () => navigate('/');
     const loginPage = () => navigate('/login');
     const handleLogout = () =>{
       const login = document.getElementById('login');
@@ -59,38 +56,9 @@ function Home() {
             />
             <div className="buttoncontainer">
                 <div className="center">
-                <button 
-                  className="button" 
-                  onClick={survivalPage}
-                >
-                  Survival
-                </button>
-                <div className="space">
-
-                </div>
-                <button 
-                  className="button" 
-                  onClick={infinityPage}
-                >
-                  Infinity
-                </button>
-                </div>
-                <div className="center">
-                <button 
-                  className="button" 
-                  onClick={leaderboardPage}
-                >
-                  Leaderboard
-                </button>
-                </div>
-                <div className="center" style={{ margin: "auto" }}>
-                <button 
-                  id = "login"
-                  className="button" 
-                  onClick={loginPage}
-                >
-                  Login
-                </button>
+                <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
                 <button 
                   id = "logout"
                   className="button" 
@@ -101,13 +69,13 @@ function Home() {
                 </button>
                 </div>
             </div>
-            <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}} onClick={accountPage}></h2>
-            <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
-            <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+            
             <div className="center">
-              
               <button className="icnbtns" id="sound" onClick={muteunmute}>
                 <i className="material-icons">volume_up</i>
+              </button>
+              <button className="icnbtns" onClick={home}>
+                <i className="material-icons">home</i>
               </button>
             </div>
         </>
