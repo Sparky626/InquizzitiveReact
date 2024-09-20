@@ -11,33 +11,28 @@ function Home() {
     const home = () => navigate('/');
     const loginPage = () => navigate('/login');
     const handleLogout = () =>{
-      const login = document.getElementById('login');
-      const logout = document.getElementById('logout');
-      const survivalscore = document.getElementById('survivalscore');
-      const infinityscore = document.getElementById('infinityscore');
-      const user = document.getElementById('user');
-      login.style.display = "none";
-      user.style.display = "none";
-      infinityscore.style.display = "none";
-      survivalscore.style.display = "none";
-      logout.style.display = "block";
       localStorage.clear();
-      window.location.reload();     
+      navigate('/');   
+    }
+    const showhide = () =>{
+        const password = document.getElementById('password');
+        if (password.textContent == "Pass: ******"){
+            password.innerHTML = "Pass: " + localStorage.getItem('password');
+        }
+        else{
+            password.innerHTML = "Pass: ******";
+        }
     }
     useEffect(() => {
       const loggedInUser = localStorage.getItem('user');
       if(loggedInUser) {
           const user = document.getElementById('user');
-          const login = document.getElementById('login');
-          const logout = document.getElementById('logout');
+          const email = document.getElementById('email');
           const survivalscore = document.getElementById('survivalscore');
           const infinityscore = document.getElementById('infinityscore');
-          survivalscore.style.display = "block";
-          infinityscore.style.display = "block";
-          logout.style.display = "block";
-          user.style.display = "block";
-          login.style.display = "none";
-          user.innerHTML = loggedInUser;
+          user.innerHTML = "Username: " + loggedInUser;
+          email.innerHTML = "Email: " + localStorage.getItem('email');
+          
           survivalscore.innerHTML = "Survival High Score: " + localStorage.getItem('survivalscore');
           infinityscore.innerHTML = "Infinity High Score: " + localStorage.getItem('infinityscore');
       }
@@ -55,19 +50,33 @@ function Home() {
                 alt = "not loading"
             />
             <div className="buttoncontainer">
-                <div className="center">
-                <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
-                <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
-                <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                <div>
+                    <h2 id = "user" className='center' style={{marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                </div>
+                <div>
+                    <h2 id = "email" className='center' style={{marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                </div>
+                <div>
+                    <h2 id = "password" className='center' style={{marginTop: "15px", animation: "fadeIn 2.0s"}}>Pass: ******</h2>
+                    
+                </div>
+                <div className='center'>
+                    <button id = "show/hide" className = "button" onClick={showhide}>Show Password</button>
+                </div>
+                <div>
+                    <h2 id = "survivalscore" className='center' style={{marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+                </div>
+                <div>
+                    <h2 id = "infinityscore" className='center' style={{marginTop: "15px", marginBottom: "15px", animation: "fadeIn 2.0s"}}></h2>
+                </div>
                 <button 
                   id = "logout"
                   className="button" 
-                  style={{display: "none", animation: "fadeIn 2.0s"}}
+                  style={{display: "block", animation: "fadeIn 2.0s"}}
                   onClick={handleLogout}
                 >
                   Logout
                 </button>
-                </div>
             </div>
             
             <div className="center">

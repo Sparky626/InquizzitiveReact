@@ -101,7 +101,7 @@ function Home() {
                 </button>
                 </div>
             </div>
-            <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}} onClick={accountPage}></h2>
+            <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s", cursor: "pointer"}} onClick={accountPage}></h2>
             <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <div className="center">
