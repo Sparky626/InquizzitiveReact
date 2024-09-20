@@ -12,5 +12,8 @@ This game mode allows you to answer questions until you answer incorrectly, whic
 
 This game mode allows you to answer questions infinitely without the penalty of ending the game when you get one wrong.
 
+## Login and Create Account
+
+Create an account and login to save your high scores in both game modes!
 
 
