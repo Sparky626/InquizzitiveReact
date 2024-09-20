@@ -22,6 +22,8 @@ function CreateAccount () {
     event.preventDefault();
     setInputs('');
     inputs.email = inputs.email.toLowerCase();
+    inputs.survivalscore = 0;
+    inputs.infinityscore = 0;
     const instance = axios.create({
       baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
       withCredentials: false,

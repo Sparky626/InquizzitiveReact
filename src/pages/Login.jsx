@@ -37,8 +37,17 @@ function Login () {
       .then(function (response){
         if(response.status == 200 && response.data != null && response.data.password == pwd){
           setUser(response.data);
-          localStorage.setItem('user', JSON.stringify(response.data.username));
+          localStorage.setItem('userdata', JSON.stringify(response.data));
+          localStorage.setItem('user', JSON.stringify(response.data.username).slice(1,-1));
+          localStorage.setItem('email', JSON.stringify(response.data.email).slice(1,-1));
+          localStorage.setItem('password', JSON.stringify(response.data.password).slice(1,-1));
+          localStorage.setItem('survivalscore', JSON.stringify(response.data.survivalscore));
+          localStorage.setItem('infinityscore', JSON.stringify(response.data.infinityscore));
           console.log(localStorage.getItem('user'));
+          console.log(localStorage.getItem('email'));
+          console.log(localStorage.getItem('password'));
+          console.log(localStorage.getItem('survivalscore'));
+          console.log(localStorage.getItem('infinityscore'));
           navigate('/');
 
         }

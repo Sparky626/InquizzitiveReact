@@ -14,8 +14,14 @@ function Home() {
     const handleLogout = () =>{
       const login = document.getElementById('login');
       const logout = document.getElementById('logout');
-      logout.style.display = "block";
+      const survivalscore = document.getElementById('survivalscore');
+      const infinityscore = document.getElementById('infinityscore');
+      const user = document.getElementById('user');
       login.style.display = "none";
+      user.style.display = "none";
+      infinityscore.style.display = "none";
+      survivalscore.style.display = "none";
+      logout.style.display = "block";
       localStorage.clear();
       window.location.reload();     
     }
@@ -25,9 +31,16 @@ function Home() {
           const user = document.getElementById('user');
           const login = document.getElementById('login');
           const logout = document.getElementById('logout');
+          const survivalscore = document.getElementById('survivalscore');
+          const infinityscore = document.getElementById('infinityscore');
+          survivalscore.style.display = "block";
+          infinityscore.style.display = "block";
           logout.style.display = "block";
+          user.style.display = "block";
           login.style.display = "none";
-          user.innerHTML = "User: " + loggedInUser;
+          user.innerHTML = loggedInUser;
+          survivalscore.innerHTML = "Survival High Score: " + localStorage.getItem('survivalscore');
+          infinityscore.innerHTML = "Infinity High Score: " + localStorage.getItem('infinityscore');
       }
       else{
         console.log("No one is logged in!");
@@ -86,9 +99,10 @@ function Home() {
                 </button>
                 </div>
             </div>
-            <h2 id = "user" className='center' style={{marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+            <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+            <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
+            <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <div className="center">
-              
               <audio id="player" src="Music/Menu.mp3" />
               <button className="icnbtns" id="sound">
                 <i className="material-icons">volume_up</i>

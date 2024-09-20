@@ -312,6 +312,11 @@ input:hover{
   translate: -4px;
   padding: 30px;
 }
+.username{
+  animation: fadeIn 2.0s;
+  display: block;
+  margin-right: auto;
+}
 @media screen and (max-width: 700px), (max-height: 700px) {
   
 }

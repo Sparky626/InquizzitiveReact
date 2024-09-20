@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
+import axios from 'axios';
 import './index.css'
 let genre;
 let genreid;
@@ -144,7 +145,27 @@ function questionsetup(token){
               nextbutton.style.display = "block";
               nextbutton.addEventListener("click", (e) => {
                   if (mode == 'survival' && clicked.style.background == "red"){
-                      endGame(score);
+                      if (score > localStorage.getItem('survivalscore')){
+                          console.log("New High Survival Score!");
+                          localStorage.setItem('survivalscore', score);
+                          const instance = axios.create({
+                            baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
+                            withCredentials: false,
+                            headers: {
+                              'Access-Control-Allow-Origin' : '*',
+                              'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                              }
+                          });
+                          let update = {"email": localStorage.getItem('email'), "updateKey" : "survivalscore" , "updateValue" : localStorage.getItem('survivalscore')}; 
+                          axios.patch('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account', update)
+                          .then(function (response){
+                            console.log(response);
+                          })
+                          .catch(function (error){
+                            console.log(error);
+                          });
+                      }
+                      endGame();
                   }
                   else if(mode == 'infinity'){
                       space.style.display = "none";
