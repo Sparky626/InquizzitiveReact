@@ -8,6 +8,7 @@ let genre;
 let genreid;
 let mode;
 let score;
+const audio = new Audio(music);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,7 +17,6 @@ createRoot(document.getElementById('root')).render(
 )
 
 export function muteunmute(){
-  const audio = new Audio(music);
   if(audio.paused)
   {
       audio.play();
