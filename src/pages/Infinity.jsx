@@ -3,10 +3,22 @@ import "../App.css";
 import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import LoadImg from '../Images/Inquizzitive-nobg-logo.png';
 import { useNavigate } from "react-router-dom";
-import  { igamestart, endGame } from '../main';
+import  { igamestart, infinityendGame } from '../main';
+import { useRef, useState, useEffect } from "react";
 function Infinity() {
     const navigate = useNavigate();
     const home = () =>  navigate('/');
+    useEffect(() => {
+      const loggedInUser = localStorage.getItem('user');
+      if(loggedInUser) {
+          const user = document.getElementById('user');
+          user.style.display = "block";
+          user.innerHTML = loggedInUser;
+      }
+      else{
+        console.log("No one is logged in!");
+      }
+    },[])
     return (
       <>
       <img
@@ -202,7 +214,7 @@ function Infinity() {
           <h2 id="question" />
           <div id="answer-buttons"></div>
           <div className="center">
-            <button className="extbtn" id="exit" onClick={() => endGame()}>
+            <button className="extbtn" id="exit" onClick={() => infinityendGame()}>
               End Loop!
             </button>
             <div className = "space" id = "space">
@@ -233,6 +245,7 @@ function Infinity() {
         <h1 id="gameover">Infinity Ended!</h1>
         <h1 id="fscore">Final Score: </h1>
       </div>
+      <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
       <div className="center">
         <audio id="player" src="../Music/Menu.mp3" />
         <button className="icnbtns" id="sound" onClick={home}>
