@@ -33,16 +33,10 @@ function Home() {
           const user = document.getElementById('user');
           const login = document.getElementById('login');
           const logout = document.getElementById('logout');
-          const survivalscore = document.getElementById('survivalscore');
-          const infinityscore = document.getElementById('infinityscore');
-          survivalscore.style.display = "block";
-          infinityscore.style.display = "block";
           logout.style.display = "block";
           user.style.display = "block";
           login.style.display = "none";
           user.innerHTML = loggedInUser;
-          survivalscore.innerHTML = "Survival High Score: " + localStorage.getItem('survivalscore');
-          infinityscore.innerHTML = "Infinity High Score: " + localStorage.getItem('infinityscore');
       }
       else{
         console.log("No one is logged in!");
@@ -102,8 +96,6 @@ function Home() {
                 </div>
             </div>
             <h2 id = "user" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s", cursor: "pointer"}} onClick={accountPage}></h2>
-            <h2 id = "survivalscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
-            <h2 id = "infinityscore" className='center' style={{display : "none" , marginTop: "15px", animation: "fadeIn 2.0s"}}></h2>
             <div className="center">
               
               <button className="icnbtns" id="sound" onClick={muteunmute}>
