@@ -21,7 +21,6 @@ function Login () {
   const navigate = useNavigate();
   const home = () => navigate('/');
   const createaccountpage = () =>  navigate('/createaccount');
-  const ForgotPassPage = () => navigate('/forgotpass');
   const handleSubmit = async (e) =>{
       e.preventDefault();
       setEmail('');
@@ -95,9 +94,6 @@ function Login () {
                     value = {pwd}
                     required
                   />
-                </div>
-                <div className="center">
-                  <p id = "forgotpass" style={{color: "blue", cursor: "pointer"}} onClick={ForgotPassPage}>Forgot Password?</p>
                 </div>
                 <div className="center">
                   <p id = "errormsg" style={{display: "none", color: "red"}}></p>
