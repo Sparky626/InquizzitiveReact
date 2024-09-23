@@ -5,10 +5,8 @@ import InquizzNoBg from '../Images/Inquizzitive-nobg.jpg';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 import { muteunmute } from "../main";
-import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
-import { render } from '@react-email/components';
-import { SES } from '@aws-sdk/client-ses';
-//import { Email } from '../emails/Welcome';
+
+
 
 
 
@@ -20,14 +18,11 @@ function ForgotPassword () {
   useEffect(() => {
       userRef.current.focus();
   }, [])
-
   const navigate = useNavigate();
   const home = () => navigate('/');
-  const createaccountpage = () =>  navigate('/createaccount');
   const handleSubmit = async (e) =>{
       e.preventDefault();
       setEmail('');
-      setPwd('');
       setEmail(email.toLowerCase());
       const instance = axios.create({
         baseURL: 'https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account',
@@ -38,54 +33,14 @@ function ForgotPassword () {
           }
       });
       instance.get('https://ocqgyz1dnd.execute-api.us-east-1.amazonaws.com/production/account?email='+ email)
-      .then(function (response){
+      .then(async function (response){
         if(response.status == 200 && response.data != null && response.data.email == email){
-          /*const client = new SESClient(config);
-            const input = { // SendEmailRequest
-            Source: "", // required
-            Destination: { // Destination
-                ToAddresses: [ // AddressList
-                "STRING_VALUE",
-                ],
-                CcAddresses: [
-                "STRING_VALUE",
-                ],
-                BccAddresses: [
-                "STRING_VALUE",
-                ],
-            },
-            Message: { // Message
-                Subject: { // Content
-                Data: "STRING_VALUE", // required
-                Charset: "STRING_VALUE",
-                },
-                Body: { // Body
-                Text: {
-                    Data: "STRING_VALUE", // required
-                    Charset: "STRING_VALUE",
-                },
-                Html: {
-                    Data: "STRING_VALUE", // required
-                    Charset: "STRING_VALUE",
-                },
-                },
-            },
-            ReplyToAddresses: [
-                "STRING_VALUE",
-            ],
-            ReturnPath: "STRING_VALUE",
-            SourceArn: "STRING_VALUE",
-            ReturnPathArn: "STRING_VALUE",
-            Tags: [ // MessageTagList
-                { // MessageTag
-                Name: "STRING_VALUE", // required
-                Value: "STRING_VALUE", // required
-                },
-            ],
-            ConfigurationSetName: "STRING_VALUE",
-            };
-            const command = new SendEmailCommand(input);
-            */
+          $.ajax({
+            type: 'GET',
+            url: 'http://localhost:3001/email'
+
+          });
+          alert("An email should reach your account in a few minutes to retrieve your password.")
           navigate('/');
         }
         else{
