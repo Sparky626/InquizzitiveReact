@@ -9,7 +9,6 @@ import CreateAccount from "./pages/CreateAccount"
 import NoPage from "./pages/NoPage";
 import Account from "./pages/Account";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ForgotPassword from './pages/ForgotPassword';
 
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
           <Route path = "/login" element = {<Login/>} exact/>
           <Route path = "/createaccount" element = {<CreateAccount/>} exact/>
           <Route path = "/account" element = {<Account/>} exact/>
-          <Route path = "/forgotpass" element = {<ForgotPassword/>} exact/>
           <Route path = "*" element = {<NoPage/>} exact/>
         </Routes>
         </Router>    
